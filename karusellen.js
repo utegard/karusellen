@@ -1,3 +1,5 @@
+/*! KarusellenJS: an easy to use vanillaJS carousel. Copyright 2015 @utegard. Licensed MIT */
+
 ;(function(window, undefined){
 	'use strict';
 
