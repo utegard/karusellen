@@ -13,10 +13,11 @@
 			karusellenItemClass: 'karusellen-content__item',
 			itemsToShow: 2,
 			itemFloatDirection: 'left',
-			buttonClass: 'kursellen__button',
-			prevButtonClass: 'kursellen__button--prev',
+			buttonsWrapperClass: 'karusellen-controls',
+			buttonClass: 'karusellen-controls__button',
+			prevButtonClass: 'karusellen-controls__button--prev',
 			prevButtonInnerHTML: '<span class=\"visually-hidden\">Previous Slide</span>',
-			nextButtonClass: 'kursellen__button--next',
+			nextButtonClass: 'karusellen-controls__button--next',
 			nextButtonInnerHTML: '<span class=\"visually-hidden\">Next Slide</span>'
 		};
 
@@ -196,9 +197,19 @@
 			}
 			
 			if(this.hasTouchSupport !== true){
-				var control = this.createControls();
-				fragment.appendChild(control.prev);
-				fragment.appendChild(control.next);	
+
+				var control = this.createControls(),
+					controlWrapper;
+
+				if(karusellenList === null){
+					controlWrapper = document.createElement('div')
+				}else{
+					controlWrapper = document.createElement('li');	
+				}
+				controlWrapper.className = this.settings.buttonsWrapperClass;
+				controlWrapper.appendChild(control.prev);
+				controlWrapper.appendChild(control.next);
+				fragment.appendChild(controlWrapper);
 			}
 			
 			this.referenceObj.original.innerHTML = '';
