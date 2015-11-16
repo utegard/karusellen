@@ -171,7 +171,7 @@
 				this.karusellenContent = document.createElement('div');
 			}
 			
-			var size = this.getCarouselSizes(this.amountOfItems);
+			var size = this.getCarouselSize();
 			this.karusellenContent.className = this.settings.karusellenContentClass;
 			this.karusellenContent.style.width = size.carouselWidth + '%';
 
@@ -276,13 +276,14 @@
 				translateValue = ((this.currentSlide/this.amountOfItems) * 100);
 			}
 			this.karusellenContent.style.webkitTransform = 'translateX(-'+translateValue+'%)';
+			this.karusellenContent.style.transform = 'translateX(-'+translateValue+'%)';
 			
 		},
 
-		getCarouselSizes: function(amountOfItems){
+		getCarouselSize: function(){
 
-			var carouselWidth = ((100*amountOfItems)/this.settings.itemsToShow);
-			var itemWidth = (100/amountOfItems);
+			var carouselWidth = ((100*this.amountOfItems)/this.settings.itemsToShow);
+			var itemWidth = (100/this.amountOfItems);
 				
 			var size = {
 				carouselWidth: carouselWidth,
